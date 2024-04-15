@@ -29,7 +29,7 @@ int main(){
   }
 
   cout << "The maximum Element in the array is :" << max << endl <<
-          "The minimum Element in the array is :" << min << endl; 
+          "The minimum Element in the array is :" << min << endl;
 
   return 0;
 }
