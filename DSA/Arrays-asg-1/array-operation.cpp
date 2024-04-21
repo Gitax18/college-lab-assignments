@@ -38,14 +38,14 @@ void insertAtPosition(int arr[], int n, int pos, int ele){
     return;
 
   for(int i = n-1; i>= pos; i--)
-    arr[i] = arr[n-1];
+    arr[i] = arr[i-1];
 
   arr[pos] = ele;
 }
 
 void displayArray(int arr[], int n){
   cout << endl;
-
+  cout << "The Array is: " << endl;
   for(int i = 0; i < n; i++)
     cout << arr[i] << " ";
 
@@ -66,8 +66,9 @@ int main(){
          << "Press 2 to add new element: " << endl
          << "Press 3 to delete array element: " << endl
          << "Press 4 to add new element at position: " << endl
-         << "Press 5 to exit: " << endl;
-
+         << "Press 5 to exit: " << endl
+         << endl << "Enter Your Choice: ";
+    
     cin >> choice;
     switch(choice){
       case 1:
@@ -87,9 +88,7 @@ int main(){
       case 3:
           cout << "Enter element to delete: ";
           cin >> ele;
-          cout << size << endl;
           deleteElement(arr, size, ele);
-          cout << size << endl;
           displayArray(arr, size);
           break;
       case 4:

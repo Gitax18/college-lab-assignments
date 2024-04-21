@@ -1,8 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-
-
 void binarySearch(int arr[], int n, int x){
   int low = 0;
   int high = n-1;
