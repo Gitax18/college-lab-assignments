@@ -1,79 +1,111 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-void inputArr(int *arr, int n){
+void inputElements(int arr[], int n){
   for(int i = 0; i < n; i++){
-    cout << "enter " << i << " element: ";
+    cout << "Enter " << i+1 << " element: ";
     cin >> arr[i];
-  } 
+  }
 }
 
+void insertToArray(int arr[], int &n, int ele){
+  arr[n-1] = ele;
+}
 
-void deleteArr(int *arr, int &n, int ele){
-  int searchFlag = -1;
-  
+void deleteElement(int arr[], int &n, int ele){
+  int isThere = -1;
+
   for(int i = 0; i < n; i++){
     if(arr[i] == ele){
-      searchFlag = i;
+      isThere = i;
       break;
     }
   }
 
-  if(searchFlag != -1){
-    for(int i = searchFlag; i < n-1; i++){
-      arr[i] = arr[i+1];
-    }
-    n--;
+  if(isThere == -1)
+    return;
+  
+  for(int i = isThere; i < n-1; i++){
+    arr[i] = arr[i+1];
   }
 
+  n--;
+}
 
+void insertAtPosition(int arr[], int n, int pos, int ele){
+
+  if(pos>=n)
+    return;
+
+  for(int i = n-1; i>= pos; i--)
+    arr[i] = arr[n-1];
+
+  arr[pos] = ele;
+}
+
+void displayArray(int arr[], int n){
+  cout << endl;
+
+  for(int i = 0; i < n; i++)
+    cout << arr[i] << " ";
+
+  cout << endl;
 }
 
 int main(){
-  while(1){
+  int size;
+  cout << "Enter the size of array: ";
+  cin >> size;
+  int *arr = new int[size];
+  bool done = false;
+  while(!done){
     int choice;
-    cout << "\n\n****** Operations on Arrays ******" << endl 
-         << "Enter 1 to input array elements" << endl 
-         << "Enter 2 to add new element" << endl 
-         << "Enter 3 to delete element" << endl 
-         << "Enter 4 to press element at given position" << endl 
-         << "Enter 5 to exit the program" << endl << endl;
+
+    cout << "\n ***** Operations on array ***** \n"
+         << "Press 1 to enter array elements: " << endl
+         << "Press 2 to add new element: " << endl
+         << "Press 3 to delete array element: " << endl
+         << "Press 4 to add new element at position: " << endl
+         << "Press 5 to exit: " << endl;
 
     cin >> choice;
-    int *arr = nullptr;
     switch(choice){
       case 1:
-          int n;
-          cout << "Enter size of array: " << endl;
-          cin >> n;
-          arr = new int[n];
-          inputArr(arr, n);   
+          for(int i = 0; i < size; i++){
+            cout << "Enter " << i+1 << " element: ";
+            cin >> arr[i]; 
+          }
+          displayArray(arr, size);
           break;
-      
       case 2:
           int ele;
-          cout << "Enter the new element :";
+          cout << "Enter new element: ";
           cin >> ele;
-          arr[n-1] ele;
+          insertToArray(arr, size, ele);
+          displayArray(arr, size);
           break;
-      
       case 3:
-          cout << "Enter the element to delete: ";
+          cout << "Enter element to delete: ";
           cin >> ele;
-          deleteArr(arr, ele);
+          cout << size << endl;
+          deleteElement(arr, size, ele);
+          cout << size << endl;
+          displayArray(arr, size);
           break;
-      
       case 4:
           int pos;
-          cout << "Enter the position : ";
+          cout << "Enter position: ";
           cin >> pos;
-          cout << "Enter the element : ";
+          cout << "Enter element: ";
           cin >> ele;
-          
+          insertAtPosition(arr, size, pos, ele);
+          displayArray(arr, size);
+          break;
+      case 5:
+        done = true;
+        break;
     }
-
-    delete arr;
-
+          
   }
   return 0;
 }
