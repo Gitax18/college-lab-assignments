@@ -4,6 +4,7 @@ using namespace std;
 int *queue;
 int cap;
 int rear = -1;
+int front = 0;
 
 void enqueue(int data){
   if(rear == cap-1){
@@ -19,19 +20,26 @@ void dequeue(){
     cout << "No Elements" << endl;
   }
 
-  for(int i = 0; i <=rear; i++){
+  for(int i = front; i <=rear; i++){
     queue[i] = queue[i+1];
   }
 
   rear--;
 }
 
-void display(){
-  cout << endl;
-  for(int i = 0; i <= rear; i++)
-    cout << "| " << queue[i] << " ";
-  cout << endl;
+
+bool isEmpty(){
+  if(rear == -1)
+    return true;
+  return false;
 }
+
+// void display(){
+//   cout << endl;
+//   for(int i = front; i <= rear; i++)
+//     cout << "| " << queue[i] << " ";
+//   cout << endl;
+// }
 
 int main(){
   cout << "Enter Queue capacity: ";
@@ -40,10 +48,10 @@ int main(){
   bool done = false;
   while(!done){
     int choice;
-    cout << "\n\n***** Operation on Stack *****\n"
+    cout << "\n\n***** Operation on Queues *****\n"
          << "Press 1 to enqueue Element\n"
          << "Press 2 to dequeue Element\n"
-         << "Press 3 to display Stack\n" 
+         << "Press 3 to check isEmpty\n" 
          << "Press 4 to exit\n\n" 
          << "Enter Your Choice: ";
     cin >> choice;
@@ -58,7 +66,7 @@ int main(){
           dequeue();
           break;
       case 3:
-          display();
+          cout << "Empty Check: "<< isEmpty();
           break;
       case 4:
           done = true;

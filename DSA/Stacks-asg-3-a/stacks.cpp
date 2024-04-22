@@ -31,11 +31,17 @@ void peek(){
   cout << "Peek : " << stack[top] << endl;
 }
 
-void display(){
-  for(int i = 0; i <= top; i++){
-    cout << "| " << stack[i] << " ";
-  }
+bool isEmpty(){
+  if(top == -1)
+    return true;
+  return false;
 }
+
+// void display(){
+//   for(int i = 0; i <= top; i++){
+//     cout << "| " << stack[i] << " ";
+//   }
+// }
 
 int main(){
   cout << "Enter Stack capacity: ";
@@ -48,7 +54,7 @@ int main(){
          << "Press 1 to push Element\n"
          << "Press 2 to pop Element\n"
          << "Press 3 to peek Stack\n"
-         << "Press 4 to display Stack\n" 
+         << "Press 4 to isEmpty\n" 
          << "Press 5 to exit\n\n" 
          << "Enter Your Choice: ";
     cin >> choice;
@@ -66,7 +72,7 @@ int main(){
           peek();
           break;
       case 4:
-          display();
+          cout << "Empty Check: "<< isEmpty();
           break;
       case 5:
           done = true;
