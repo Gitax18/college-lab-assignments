@@ -65,10 +65,11 @@ int main(){
       case 2:
           dequeue();
           break;
-      case 3:
-          cout << boolalpha;
-          cout << "Empty Check: "<< isEmpty();
-          cout << noboolalpha;          
+       case 3:
+          if(isEmpty())
+            cout << "Queue is Empty" << endl;
+          else 
+            cout << "Queue is not Empty." << endl;
           break;
       case 4:
           done = true;

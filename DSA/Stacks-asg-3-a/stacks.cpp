@@ -23,13 +23,13 @@ void pop(){
   top--;
 }
 
-void peek(){
-  if(top == -1){
-    cout << "Stack Underflow" << endl;
-    return;
-  }
-  cout << "Peek : " << stack[top] << endl;
-}
+// void peek(){
+//   if(top == -1){
+//     cout << "Stack Underflow" << endl;
+//     return;
+//   }
+//   cout << "Peek : " << stack[top] << endl;
+// }
 
 bool isEmpty(){
   if(top == -1)
@@ -53,9 +53,8 @@ int main(){
     cout << "\n\n***** Operation on Stack *****\n"
          << "Press 1 to push Element\n"
          << "Press 2 to pop Element\n"
-         << "Press 3 to peek Stack\n"
-         << "Press 4 to isEmpty\n" 
-         << "Press 5 to exit\n\n" 
+         << "Press 3 to isEmpty\n" 
+         << "Press 4 to exit\n\n" 
          << "Enter Your Choice: ";
     cin >> choice;
     switch(choice){
@@ -69,14 +68,12 @@ int main(){
           pop();
           break;
       case 3:
-          peek();
+          if(isEmpty())
+            cout << "Stack is Empty!!" << endl;
+          else 
+            cout << "Stack is not Empty." << endl;
           break;
       case 4:
-          cout << boolalpha;
-          cout << "Empty Check: "<< isEmpty();
-          cout << noboolalpha;
-          break;
-      case 5:
           done = true;
           break;
       default:
