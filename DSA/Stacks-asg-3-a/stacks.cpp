@@ -72,7 +72,9 @@ int main(){
           peek();
           break;
       case 4:
+          cout << boolalpha;
           cout << "Empty Check: "<< isEmpty();
+          cout << noboolalpha;
           break;
       case 5:
           done = true;

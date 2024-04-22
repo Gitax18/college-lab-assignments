@@ -66,7 +66,9 @@ int main(){
           dequeue();
           break;
       case 3:
+          cout << boolalpha;
           cout << "Empty Check: "<< isEmpty();
+          cout << noboolalpha;          
           break;
       case 4:
           done = true;
